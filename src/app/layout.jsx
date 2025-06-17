@@ -1,18 +1,16 @@
-import "./globals.css";
-import Navbar from "@/components/navbar";
+import "@styles/globals.css";
 
 export const metadata = {
-  title: "Promptopia",
-  description: "A prompt finding app...",
+    title: "Promptopia",
+    description: "Discover & Share AI Prompts"
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-      </body>
-    </html>
-  );
-}
+    return (
+        <html lang="en">
+            <body>
+                <main>{children}</main>
+            </body>
+        </html>
+    );
+};
