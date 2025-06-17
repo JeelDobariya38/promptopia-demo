@@ -22,3 +22,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.app {
+  @apply mx-4;
+}
+
+.red_bule_gradient {
+  background: rgb(150, 83, 11);
+  background: linear-gradient(
+    to right,
+    rgb(230, 219, 100) 0%,
+    #ffa73d 30%,
+    #ff7c00 60%,
+    rgb(146, 46, 0) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
