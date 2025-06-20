@@ -1,3 +1,4 @@
+import { SubmitButton } from '@components/submitbutton';
 import { redirect } from 'next/navigation'
 
 async function createPost(formData) {
@@ -46,7 +47,7 @@ export default function Create() {
                         <textarea id="tags" name="tags" placeholder="#enter #hashtags #releated #to #your #prompts" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" />
                     </div>
 
-                    <button type="submit" className="blue_btn">Create Prompt Post</button>
+                    <SubmitButton value="Create Prompt Post" />
                 </form>
             </div>
         </section>
