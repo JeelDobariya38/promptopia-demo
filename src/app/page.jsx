@@ -1,6 +1,8 @@
 import prisma from "@lib/prisma";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
     let posts = await prisma.posts.findMany();
 
@@ -10,7 +12,7 @@ export default async function Home() {
                 process.env.PROFILE === "Development" ? 
                 (
                     <div className="inline-block my-5 rounded-full border-2 border-red-500 px-3 py-1 text-sm font-semibold text-red-700">
-                        {process.env.WARNTEXT}
+                        {process.env.WARNTEXT + " ("+ process.env.ENV + ")"}
                     </div>
                 ) : undefined
             }

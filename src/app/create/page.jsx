@@ -14,7 +14,7 @@ async function createPost(formData) {
         },
     });
 
-    console.log("New Post Created: " + post);
+    console.log(`New Post Created: ${post}`);
 
     redirect("/");
 }
