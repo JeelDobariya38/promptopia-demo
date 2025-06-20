@@ -19,6 +19,11 @@ async function createPost(formData) {
     redirect("/");
 }
 
+export const metadata = {
+    title: "Create | Promptopia",
+    description: "Discover & Share AI Prompts"
+};
+
 export default function Create() {
     return (
         <section className="md:w-1/2 w-full">
