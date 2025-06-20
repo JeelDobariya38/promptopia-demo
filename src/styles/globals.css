@@ -24,7 +24,7 @@ body {
 }
 
 .app {
-  @apply mx-4;
+  @apply p-4;
 }
 
 .vertical_center {
