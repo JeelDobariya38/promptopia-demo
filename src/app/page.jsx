@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
     return (
         <section className="text-center">
             <div className="sm:text-4xl w-full mt-5 text-2xl font-black">

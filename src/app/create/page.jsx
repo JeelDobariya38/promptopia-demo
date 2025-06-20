@@ -1,5 +1,6 @@
 import { SubmitButton } from '@components/submitbutton';
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
+// import { savePost } from '@utils/db';
 
 async function createPost(formData) {
     "use server";
@@ -9,10 +10,7 @@ async function createPost(formData) {
     let prompt = formData.get('prompt');
     let tags = formData.get('tags');
 
-    console.log(name);
-    console.log(email);
-    console.log(prompt);
-    console.log(tags);
+    // savePost(name, email, prompt, tags);
 
     redirect("/");
 }
