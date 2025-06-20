@@ -12,9 +12,10 @@ datasource db {
 }
 
 model Posts {
-  id     Int     @id @default(autoincrement())
-  name   String
-  email  String
-  prompt String
-  tags   String
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String
+  prompt     String
+  tags       String
+  created_at DateTime @default(now())
 }
