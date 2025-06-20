@@ -1,6 +1,9 @@
+import prisma from "@lib/prisma";
 import Link from "next/link";
 
 export default async function Home() {
+    let posts = await prisma.posts.findMany();
+
     return (
         <section className="text-center">
             <div className="sm:text-4xl w-full mt-5 text-2xl font-black">
@@ -15,6 +18,16 @@ export default async function Home() {
             <div className="my-4 flex justify-center gap-5">
                 <Link href="/profile" className="filled_blue_btn">My Profile</Link>
                 <Link href="/create" className="filled_blue_btn">Create Post</Link>
+            </div>
+
+            <div>
+                {posts.map(post => (
+                    <li key={post.id}>
+                        <Link href={`/post/${post.id}`}>
+                            {post.prompt + " ------- " + post.name}
+                        </Link>
+                    </li>
+                ))}
             </div>
         </section>
     )

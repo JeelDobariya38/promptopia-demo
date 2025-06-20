@@ -1,16 +1,20 @@
+import prisma from "@lib/prisma";
 import { SubmitButton } from '@components/submitbutton';
-import { redirect } from 'next/navigation';
-// import { savePost } from '@utils/db';
+import { redirect } from "next/navigation";
 
 async function createPost(formData) {
     "use server";
 
-    let name = formData.get('name');
-    let email = formData.get('email');
-    let prompt = formData.get('prompt');
-    let tags = formData.get('tags');
+    const post = await prisma.posts.create({
+        data: {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            prompt: formData.get('prompt'),
+            tags: formData.get('tags')
+        },
+    });
 
-    // savePost(name, email, prompt, tags);
+    console.log("New Post Created: " + post);
 
     redirect("/");
 }
