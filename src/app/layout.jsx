@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <main className="app">{children}</main>
+                <main className="app vertical_center">{children}</main>
             </body>
         </html>
     );
