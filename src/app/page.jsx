@@ -6,6 +6,14 @@ export default async function Home() {
 
     return (
         <section className="text-center">
+            {
+                process.env.PROFILE === "Development" ? 
+                (
+                    <div className="inline-block my-5 rounded-full border-2 border-red-500 px-3 py-1 text-sm font-semibold text-red-700">
+                        {process.env.WARNTEXT}
+                    </div>
+                ) : undefined
+            }
             <div className="sm:text-4xl w-full mt-5 text-2xl font-black">
                 <h1 className="">Discover & Share Prompts</h1>
                 <p className="text-orange-500 uppercase red_bule_gradient">AI Pompting Tool</p>
