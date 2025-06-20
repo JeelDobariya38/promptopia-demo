@@ -1,3 +1,4 @@
+import { PostCard } from "@components/postcard";
 import prisma from "@lib/prisma";
 import Link from "next/link";
 
@@ -32,11 +33,7 @@ export default async function Home() {
 
             <div>
                 {posts.map(post => (
-                    <li key={post.id}>
-                        <Link href={`/post/${post.id}`}>
-                            {post.prompt + " ------- " + post.name}
-                        </Link>
-                    </li>
+                   <PostCard key={post.id} post={post} />
                 ))}
             </div>
         </section>
