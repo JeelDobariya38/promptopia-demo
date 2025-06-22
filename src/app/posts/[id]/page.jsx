@@ -17,5 +17,5 @@ export default async function Page({ params }) {
         },
     });
 
-    return <PostCard post={post} />
+    return post? <PostCard post={post} /> : <h1>Post with id=({id}) Not Found!!!</h1>;
 }
