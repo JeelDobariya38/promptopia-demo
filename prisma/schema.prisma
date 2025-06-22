@@ -7,15 +7,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Posts {
-  id         Int      @id @default(autoincrement())
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   email      String
   prompt     String
   tags       String
-  created_at DateTime @default(now())
+  created_at DateTime? @default(now())
 }
