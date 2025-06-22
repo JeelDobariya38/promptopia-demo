@@ -5,18 +5,25 @@ import { redirect } from "next/navigation";
 async function createPost(formData) {
     "use server";
 
-    const post = await prisma.posts.create({
-        data: {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            prompt: formData.get('prompt'),
-            tags: formData.get('tags')
-        },
-    });
+    let name = formData.get('name');
+    let email = formData.get('email');
+    let prompt = formData.get('prompt');
+    let tags = formData.get('tags');
 
-    console.log(`New Post Created: ${post}`);
+    if (name && email && prompt && tags) {
+        const post = await prisma.posts.create({
+            data: {
+                name,
+                email,
+                prompt,
+                tags
+            },
+        });
 
-    redirect("/");
+        redirect("/");
+    } else {
+        redirect("/create");
+    }
 }
 
 export const metadata = {
@@ -36,22 +43,22 @@ export default function Create() {
                 <form className="flex flex-col gap-3 sm:text-lg text-sm" action={createPost}>
                     <div>
                         <label htmlFor="name">Name:</label>
-                        <input id="name" name="name" placeholder="Full Name" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" />
+                        <input id="name" name="name" placeholder="Full Name" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" required />
                     </div>
 
                     <div>
                         <label htmlFor="email">Email:</label>
-                        <input id="email" name="email" type="email" placeholder="example@gmail.com" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" />
+                        <input id="email" name="email" type="email" placeholder="example@gmail.com" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" required />
                     </div>
 
                     <div>
                         <label htmlFor="prompt">Prompt:</label>
-                        <textarea id="prompt" name="prompt" placeholder="Enter your prompt" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" />
+                        <textarea id="prompt" name="prompt" placeholder="Enter your prompt" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" required />
                     </div>
 
                     <div>
                         <label htmlFor="tags">Tags:</label>
-                        <textarea id="tags" name="tags" placeholder="#enter #hashtags #releated #to #your #prompts" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" />
+                        <textarea id="tags" name="tags" placeholder="#enter #hashtags #releated #to #your #prompts" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" required />
                     </div>
 
                     <SubmitButton value="Create Prompt Post" />
