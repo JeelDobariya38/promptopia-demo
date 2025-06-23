@@ -1,23 +1,15 @@
-"use client";
+import Link from 'next/link';
+import PostCard from "@components/postcard";
 
-import { PostCard } from "@components/postcard";
-import { useEffect, useState } from "react";
-
-export default function Feed() {
-    const [posts, setPosts] = useState(null);
-
-    useEffect(() => {
-        fetch('/api/posts')
-            .then((res) => res.json())
-            .then((jsonres) => setPosts(jsonres.data));
-    }, []);
-
+export default function Feed({ posts }) {
     return (
         <div>
             {
                 posts ? (
                     posts.map(post => (
-                        <PostCard key={post.id} post={post} />
+                        <Link key={post.id} href={`/posts/${post.id}`} className="block">
+                            <PostCard post={post} />
+                        </Link>
                     ))
                 ): undefined
             }

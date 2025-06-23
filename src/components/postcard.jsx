@@ -1,9 +1,4 @@
-"use client";
-
-// import Link from 'next/link';
-// <Link href={`/posts/${post.id}`} className="block">
-
-export function PostCard({ post }) {
+export default function PostCard({ post }) {
     return (
         <div className="border rounded-lg shadow-md p-4 mb-4 bg-white hover:shadow-lg transition-shadow duration-200 ease-in-out">
                 <h2 className="text-xl font-semibold text-blue-700 hover:text-blue-800 mb-2">

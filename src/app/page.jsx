@@ -1,19 +1,16 @@
 import Feed from "@components/feed";
-import LoadingFeed from "@components/loadingfeed";
 import NavigationBar from "@components/navigationbar";
-import { Suspense } from "react";
+import prisma from "@lib/prisma";
 
 export const dynamic = 'force-dynamic';
-export const experimental_ppr = true;
 
 export default async function Home() {
+    let posts = await prisma.posts.findMany();
+
     return (
         <section className="text-center">
             <NavigationBar />
-
-            <Suspense fallback={ <LoadingFeed /> }>
-                <Feed />
-            </Suspense>
+            <Feed posts={ posts }/>
         </section>
     )
 }
