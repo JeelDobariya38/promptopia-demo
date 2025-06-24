@@ -1,28 +1,6 @@
-import prisma from "@lib/prisma";
+import { createPost } from '@app/action';
 import { SubmitButton } from '@components/submitbutton';
-import { redirect } from "next/navigation";
 
-async function createPost(formData) {
-    "use server";
-
-    let title = formData.get('title');
-    let prompt = formData.get('prompt');
-    let tags = formData.get('tags');
-
-    if (title && prompt && tags) {
-        const post = await prisma.posts.create({
-            data: {
-                title,
-                prompt,
-                tags
-            },
-        });
-
-        redirect("/");
-    } else {
-        redirect("/create");
-    }
-}
 
 export const metadata = {
     title: "Create | Promptopia",
