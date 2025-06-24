@@ -1,9 +1,13 @@
+import ReactMarkdown from "react-markdown";
+
 export default function PostCard({ post }) {
     return (
         <div className="border rounded-lg shadow-md p-4 mb-4 bg-white hover:shadow-lg transition-shadow duration-200 ease-in-out">
-                <h2 className="text-xl font-semibold text-blue-700 hover:text-blue-800 mb-2">
-                    {post.prompt}
-                </h2>
+                <div className="text-lg rounded bg-slate-800 text-gray-200 mb-2 p-4">
+                    <ReactMarkdown>
+                        {post.prompt}
+                    </ReactMarkdown>
+                </div>
                 <p className="text-gray-700 mb-1">
                     <span className="font-medium">Author: </span> {post.name}
                 </p>
