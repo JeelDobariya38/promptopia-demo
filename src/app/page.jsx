@@ -1,11 +1,11 @@
 import Feed from "@components/feed";
 import NavigationBar from "@components/navigationbar";
-import prisma from "@lib/prisma";
+import { getPosts } from "./action";
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-    let posts = await prisma.posts.findMany();
+    let posts = await getPosts();
 
     return (
         <section className="text-center">
