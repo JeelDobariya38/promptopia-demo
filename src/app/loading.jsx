@@ -3,11 +3,10 @@ import PostCard from "@components/postcard";
 
 export default function Loading() {
     let dummypost = {
-        "name": "Jeel Dobariya",
-        "email": "Idk@idonotknow",
+        "title": "Jeel Dobariya",
         "prompt": "Radhe Radhe!!!",
         "tags": "#radhe #krishna",
-        "created_at": "2025-06-22T07:53:24.978Z"
+        "createdAt": "2025-06-22T07:53:24.978Z"
     };
 
     return (

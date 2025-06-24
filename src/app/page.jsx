@@ -10,7 +10,7 @@ export default async function Home() {
     return (
         <section className="text-center">
             <NavigationBar />
-            <Feed posts={ posts }/>
+            <Feed posts={ posts } />
         </section>
     )
 }

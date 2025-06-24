@@ -10,7 +10,7 @@ export default function NavigationBar() {
             </div>
 
             <div>
-                <p className="sm:text-lg sm:font-bold text-sm font-thin text-gray-600">An open source, AI prompt shareing tool.</p>
+                <p className="sm:text-lg sm:font-bold text-sm font-thin text-gray-400">An open source, AI prompt shareing tool.</p>
             </div>
 
             <div className="my-4 flex justify-center gap-5">

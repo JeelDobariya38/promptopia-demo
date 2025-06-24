@@ -11,18 +11,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model User {
-//   id       String @id @default(auto()) @map("_id") @db.ObjectId
-//   name     String
-//   email    String @unique
-//   password String
-// }
-
 model Posts {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  email      String
-  prompt     String
-  tags       String
-  created_at DateTime? @default(now())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  prompt    String
+  tags      String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime  @updatedAt
 }
