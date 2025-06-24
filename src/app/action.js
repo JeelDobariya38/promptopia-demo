@@ -25,6 +25,12 @@ export async function createPost(formData) {
 }
 
 
+export async function getPosts() {
+    let posts = await prisma.posts.findMany();
+    return posts;
+}
+
+
 export async function getPost(id) {
     let post = await prisma.posts.findFirst({
         where: {
@@ -36,7 +42,28 @@ export async function getPost(id) {
 }
 
 
-export async function getPosts() {
-    let posts = await prisma.posts.findMany();
-    return posts;
+export async function updatePost(id, post) {
+    const updatedPost = await prisma.user.update({
+        where: {
+            id,
+        },
+        data: {
+            title: post.title,
+            prompt: post.prompt,
+            tags: post.tags
+        },
+    })
+
+    return updatedPost;
+}
+
+
+export async function deletePost(id) {
+    const deletedPost = await prisma.posts.delete({
+        where: {
+            id,
+        },
+    });
+
+    return deletedPost;
 }
