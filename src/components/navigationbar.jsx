@@ -15,7 +15,7 @@ export default function NavigationBar() {
 
             <div className="my-4 flex justify-center gap-5">
                 <Link href="/profile" className="filled_blue_btn">My Profile</Link>
-                <Link href="/create" className="filled_blue_btn">Create Post</Link>
+                <Link href="/posts/create" className="filled_blue_btn">Create Post</Link>
             </div>
         </>
     )
