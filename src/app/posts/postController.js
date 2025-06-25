@@ -1,7 +1,7 @@
 'use server';
 
 import prisma from "@lib/prisma";
-import { permanentRedirect, redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 
 export async function getPosts() {

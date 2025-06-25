@@ -1,4 +1,4 @@
-import { getPost, updatePostForm } from '@app/action';
+import { getPost, updatePostForm } from '@app/posts/postController';
 import { SubmitButton } from '@components/submitbutton';
 import { redirect } from 'next/navigation';
 

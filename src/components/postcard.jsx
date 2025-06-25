@@ -1,4 +1,4 @@
-import { deletePostForm } from "@app/action";
+import { deletePostForm } from "@app/posts/postController";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { SubmitButton } from "./submitbutton";

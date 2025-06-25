@@ -1,6 +1,6 @@
 import Feed from "@components/feed";
 import NavigationBar from "@components/navigationbar";
-import { getPosts } from "./action";
+import { getPosts } from "./posts/postController";
 
 export const dynamic = 'force-dynamic';
 

@@ -1,4 +1,4 @@
-import { createPostForm } from '@app/action';
+import { createPostForm } from '@app/posts/postController';
 import { SubmitButton } from '@components/submitbutton';
 
 

@@ -1,4 +1,4 @@
-import { getPost } from "@app/action";
+import { getPost } from "@app/posts/postController";
 import { redirect } from "next/navigation";
 import PostCard from "@components/postcard";
 
