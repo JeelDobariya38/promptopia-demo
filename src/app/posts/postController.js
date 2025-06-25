@@ -4,8 +4,12 @@ import prisma from "@lib/prisma";
 import { permanentRedirect } from "next/navigation";
 
 
-export async function getPosts() {
-    let posts = await prisma.posts.findMany();
+export async function getPosts(limit) {
+    let posts = await prisma.posts.findMany({
+        skip: 0,
+        take: limit,
+    });
+
     return posts;
 }
 
