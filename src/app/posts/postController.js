@@ -24,6 +24,32 @@ export async function getPost(id) {
     return post;
 }
 
+export async function getPostsByTags(searchString) {
+    if (!searchString) {
+        return await prisma.posts.findMany();
+    }
+
+    const posts = await prisma.posts.findMany({
+        where: {
+            OR: [
+                {
+                    prompt: {
+                        contains: searchString,
+                        mode: 'insensitive',
+                    },
+                },
+                {
+                    tags: {
+                        contains: searchString,
+                        mode: 'insensitive',
+                    },
+                },
+            ],
+        },
+    });
+
+    return posts;
+}
 
 export async function createPostForm(formData) {
     let title = formData.get('title');

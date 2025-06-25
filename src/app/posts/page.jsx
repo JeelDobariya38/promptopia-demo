@@ -1,6 +1,6 @@
-import Feed from "@components/feed";
 import NavigationBar from "@components/navigationbar";
 import { getPosts } from "@app/posts/postController";
+import FeedWithSearch from "@components/feedwithsearch";
 
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default async function Home() {
     return (
         <section className="text-center">
             <NavigationBar />
-            <Feed posts={ posts } />
+            <FeedWithSearch initialPosts={ posts } />
         </section>
     )
 }
