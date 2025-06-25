@@ -5,7 +5,7 @@ import { SubmitButton } from "./submitbutton";
 
 export default function PostCard({ post, details}) {
     return (
-        <div className="border rounded-lg shadow-md p-4 mb-4 bg-slate-950 hover:shadow-lg transition-shadow duration-200 ease-in-out">
+        <div className="w-full h-full overflow-hidden border rounded-lg shadow-md p-4 bg-slate-950 hover:shadow-lg transition-shadow duration-200 ease-in-out">
             <h2 className="text-3xl text-sky-600 font-black mb-4">
                 {post.title}
             </h2>

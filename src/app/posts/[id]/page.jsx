@@ -18,5 +18,9 @@ export default async function PostPage({ params }) {
         redirect("/");
     }
 
-    return <PostCard post={post} details={true} />;
+    return (
+        <div className="w-1/2 min-w-3xs">
+            <PostCard post={post} details={true} />
+        </div>
+    );
 }
