@@ -4,7 +4,24 @@ import prisma from "@lib/prisma";
 import { redirect } from "next/navigation";
 
 
-export async function createPost(formData) {
+export async function getPosts() {
+    let posts = await prisma.posts.findMany();
+    return posts;
+}
+
+
+export async function getPost(id) {
+    let post = await prisma.posts.findFirst({
+        where: {
+            id,
+        },
+    });
+
+    return post;
+}
+
+
+export async function createPostForm(formData) {
     let title = formData.get('title');
     let prompt = formData.get('prompt');
     let tags = formData.get('tags');
@@ -25,45 +42,39 @@ export async function createPost(formData) {
 }
 
 
-export async function getPosts() {
-    let posts = await prisma.posts.findMany();
-    return posts;
-}
+export async function updatePostForm(formData) {
+    let id = formData.get("postid");
+    let title = formData.get('title');
+    let prompt = formData.get('prompt');
+    let tags = formData.get('tags');
 
-
-export async function getPost(id) {
-    let post = await prisma.posts.findFirst({
-        where: {
-            id,
-        },
-    });
-
-    return post;
-}
-
-
-export async function updatePost(id, post) {
-    const updatedPost = await prisma.user.update({
+    const updatedPost = await prisma.posts.update({
         where: {
             id,
         },
         data: {
-            title: post.title,
-            prompt: post.prompt,
-            tags: post.tags
+            title,
+            prompt,
+            tags
         },
-    })
+    });
 
-    return updatedPost;
+    if (updatedPost) {
+        redirect(`/posts/${updatedPost.id}`);
+    }
+
+    redirect("/");
 }
 
 
-export async function deletePost(id) {
-    const deletedPost = await prisma.posts.delete({
+export async function deletePostForm(formData) {
+    let id = formData.get("postid");
+
+    await prisma.posts.delete({
         where: {
             id,
         },
     });
 
-    return deletedPost;
+    redirect("/");
 }

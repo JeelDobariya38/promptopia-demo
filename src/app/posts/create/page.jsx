@@ -1,4 +1,4 @@
-import { createPost } from '@app/action';
+import { createPostForm } from '@app/action';
 import { SubmitButton } from '@components/submitbutton';
 
 
@@ -16,7 +16,7 @@ export default function Create() {
             </div>
 
             <div className="my-5 p-4 rounded-4xl bg-slate-800">
-                <form className="flex flex-col gap-3 sm:text-lg text-sm" action={createPost}>
+                <form className="flex flex-col gap-3 sm:text-lg text-sm" action={createPostForm}>
                     <div>
                         <label htmlFor="title">Title:</label>
                         <input id="title" name="title" placeholder="Enter a title" className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600" required />
