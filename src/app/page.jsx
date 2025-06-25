@@ -5,7 +5,7 @@ import { getPosts } from "./posts/postController";
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-    let posts = await getPosts();
+    let posts = await getPosts(2);
 
     return (
         <section className="text-center">

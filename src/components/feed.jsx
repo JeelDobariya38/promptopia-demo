@@ -8,7 +8,7 @@ export default function Feed({ posts }) {
                 posts ? (
                     posts.map(post => (
                         <div key={post.id}>
-                            <Link href={`/posts/${post.id}`} className="block w-100 h-100 ">
+                            <Link href={`/posts/${post.id}`} className="block sm:w-100 sm:h-100 w-50 h-50">
                                 <PostCard post={post} />
                             </Link>
                         </div>

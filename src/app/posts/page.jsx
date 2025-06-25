@@ -1,6 +1,11 @@
 import Feed from "@components/feed";
 import NavigationBar from "@components/navigationbar";
-import { getPosts } from "./posts/postController";
+import { getPosts } from "@app/posts/postController";
+
+
+export const metadata = {
+    title: "Posts | Promptopia"
+};
 
 export const dynamic = 'force-dynamic';
 
