@@ -1,7 +1,7 @@
 'use server';
 
 import prisma from "@lib/prisma";
-import { redirect } from "next/navigation";
+import { permanentRedirect, redirect } from "next/navigation";
 
 
 export async function getPosts() {
@@ -35,9 +35,9 @@ export async function createPostForm(formData) {
             },
         });
 
-        redirect(`/posts/${post.id}`);
+        permanentRedirect(`/posts/${post.id}`);
     } else {
-        redirect("/create");
+        permanentRedirect("/create");
     }
 }
 
@@ -60,10 +60,10 @@ export async function updatePostForm(formData) {
     });
 
     if (updatedPost) {
-        redirect(`/posts/${updatedPost.id}`);
+        permanentRedirect(`/posts/${updatedPost.id}`);
     }
 
-    redirect("/");
+    permanentRedirect("/");
 }
 
 
@@ -76,5 +76,5 @@ export async function deletePostForm(formData) {
         },
     });
 
-    redirect("/");
+    permanentRedirect("/");
 }
