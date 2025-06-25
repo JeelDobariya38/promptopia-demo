@@ -18,5 +18,5 @@ export default async function PostPage({ params }) {
         redirect("/");
     }
 
-    return <PostCard post={post} />;
+    return <PostCard post={post} details={true} />;
 }
