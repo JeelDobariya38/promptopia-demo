@@ -1,17 +1,22 @@
 import { getPost } from "@app/action";
+import { redirect } from "next/navigation";
 import PostCard from "@components/postcard";
 
+
 export const metadata = {
-    title: "Posts | Promptopia",
-    description: "Discover & Share AI Prompts"
+    title: "Posts | Promptopia"
 };
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ params }) {
+export default async function PostPage({ params }) {
     const { id } = await params;
 
     let post = await getPost(id);
 
-    return post? <PostCard post={post} /> : <h1>Post with id=({id}) Not Found!!!</h1>;
+    if (!post) {
+        redirect("/");
+    }
+
+    return <PostCard post={post} />;
 }

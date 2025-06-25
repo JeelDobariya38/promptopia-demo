@@ -3,11 +3,10 @@ import { SubmitButton } from '@components/submitbutton';
 
 
 export const metadata = {
-    title: "Create | Promptopia",
-    description: "Discover & Share AI Prompts"
+    title: "Create | Promptopia"
 };
 
-export default function Create() {
+export default function CreatePage() {
     return (
         <section className="md:w-1/2 w-full">
             <div className="sm:text-4xl w-full mt-5 text-2xl font-black">
