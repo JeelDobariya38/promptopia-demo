@@ -1,5 +1,3 @@
 export default function LoadingFeed() {
-    return (
-        <h1>LoadingFeed...</h1>
-    )
+  return <h1>LoadingFeed...</h1>;
 }
