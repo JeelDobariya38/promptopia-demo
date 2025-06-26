@@ -11,6 +11,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Users {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  username  String    @unique
+  email     String    @unique
+  password  String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime  @updatedAt
+  Posts     Posts[]
+}
+
 model Posts {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   title     String
@@ -18,4 +28,6 @@ model Posts {
   tags      String
   createdAt DateTime? @default(now())
   updatedAt DateTime  @updatedAt
+  author    Users     @relation(fields: [usersId], references: [id], onDelete: Cascade)
+  usersId   String    @db.ObjectId
 }
