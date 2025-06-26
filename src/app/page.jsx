@@ -1,6 +1,7 @@
 import Feed from "@components/feed";
 import NavigationBar from "@components/navigationbar";
 import { getPosts } from "./posts/postController";
+import Link from "next/link";
 
 export const dynamic = 'force-dynamic';
 
@@ -11,6 +12,7 @@ export default async function Home() {
         <section className="text-center">
             <NavigationBar />
             <Feed posts={ posts } />
+            <Link href="/posts" className="blue_btn inline-block">View More</Link>
         </section>
     )
 }
