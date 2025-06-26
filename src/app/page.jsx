@@ -12,7 +12,7 @@ export default async function Home() {
         <section className="text-center">
             <NavigationBar />
             <Feed posts={ posts } />
-            <Link href="/posts" className="blue_btn inline-block">View More</Link>
+            <Link href="/posts" className="my-3 blue_btn inline-block">View More</Link>
         </section>
     )
 }
