@@ -41,19 +41,12 @@ export async function Login(formData) {
 
     let user = await prisma.users.findFirst({
         where: {
-            OR: [
-                {
-                    username,
-                },
-                {
-                    email: username,
-                },
-            ],
+            username,
         },
     });
 
     if (!user) {
-        return redirect("/auth/login?message=invalid-username-or-email")
+        return redirect("/auth/login?message=invalid-username")
     }
 
     if (user.password == password) {

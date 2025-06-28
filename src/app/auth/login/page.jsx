@@ -19,12 +19,12 @@ export default function SignupPage() {
       <div className="my-5 p-4 rounded-4xl bg-slate-800">
         <form className="flex flex-col gap-3 sm:text-lg text-sm" action={Login}>
           <div>
-            <label htmlFor="username">Username / Email:</label>
+            <label htmlFor="username">Username:</label>
             <input
               id="username"
               name="username"
               type="text"
-              placeholder="Enter your username / email"
+              placeholder="Enter your username"
               className="w-full my-1 p-1 rounded outline-2 focus:outline-orange-600"
               required
             />
