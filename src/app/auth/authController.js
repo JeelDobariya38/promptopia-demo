@@ -30,11 +30,8 @@ export async function Signup(formData) {
         }
     });
 
-    if (user) {
-        const cookieStore = await cookies();
-        cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict" });
-    }
-
+    const cookieStore = await cookies();
+    cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict", maxAge: 60 * 60 * 60 });
     permanentRedirect("/");
 }
 
@@ -55,13 +52,17 @@ export async function Login(formData) {
         },
     });
 
+    if (!user) {
+        return redirect("/auth/login?message=invalid-username-or-email")
+    }
+
     if (user.password == password) {
         const cookieStore = await cookies();
-        cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict" });
+        cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict", maxAge: 60 * 60 * 60 });
         return permanentRedirect("/");
     }
 
-    return redirect("/auth/login?message=invalid-username-or-password")
+    return redirect("/auth/login?message=invalid-password");
 }
 
 export async function Logout(formData) {
