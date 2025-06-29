@@ -25,6 +25,7 @@ export default function PostCard({ post, details }) {
           <div className="my-2 flex gap-2">
             <Link
               className="blue_btn inline-block"
+              prefetch={false}
               href={`/posts/${post.id}/edit`}
             >
               Edit

@@ -17,10 +17,10 @@ export default function NavigationBar() {
       </div>
 
       <div className="my-4 flex justify-center gap-5">
-        <Link href="/profile" className="filled_blue_btn">
+        <Link href="/profile" prefetch={false} className="filled_blue_btn">
           My Profile
         </Link>
-        <Link href="/posts/create" className="filled_blue_btn">
+        <Link href="/posts/create" prefetch={false} className="filled_blue_btn">
           Create Post
         </Link>
       </div>

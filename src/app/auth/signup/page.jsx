@@ -75,7 +75,7 @@ export default function SignupPage() {
         <div>
           <p>
             Have a account already?{" "}
-            <Link href="/auth/login" className="text-sky-500">
+            <Link href="/auth/login" prefetch={false} className="text-sky-500">
               Login
             </Link>
           </p>

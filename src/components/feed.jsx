@@ -9,6 +9,7 @@ export default function Feed({ posts }) {
             <div key={post.id}>
               <Link
                 href={`/posts/${post.id}`}
+                prefetch={false}
                 className="block sm:w-100 sm:h-100 w-50 h-50"
               >
                 <PostCard post={post} />

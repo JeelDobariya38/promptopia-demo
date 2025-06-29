@@ -58,7 +58,7 @@ export default function LoginPage() {
         <div>
           <p>
             Don{"'"}t have a account?{" "}
-            <Link href="/auth/signup" className="text-sky-500">
+            <Link href="/auth/signup" prefetch={false} className="text-sky-500">
               Sign Up
             </Link>
           </p>
