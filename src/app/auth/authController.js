@@ -1,7 +1,7 @@
 'use server';
 
 import prisma from "@lib/prisma";
-import { cookies } from "next/headers";
+import { createSession, deleteSession } from "@lib/session";
 import { permanentRedirect, redirect } from "next/navigation";
 
 
@@ -30,8 +30,7 @@ export async function Signup(formData) {
         }
     });
 
-    const cookieStore = await cookies();
-    cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict", maxAge: 60 * 60 * 60 });
+    await createSession(user.id);
     permanentRedirect("/");
 }
 
@@ -50,8 +49,7 @@ export async function Login(formData) {
     }
 
     if (user.password == password) {
-        const cookieStore = await cookies();
-        cookieStore.set("user-id", user.id, { secure: true, httpOnly: true, sameSite: "strict", maxAge: 60 * 60 * 60 });
+        await createSession(user.id);
         return permanentRedirect("/");
     }
 
@@ -59,7 +57,6 @@ export async function Login(formData) {
 }
 
 export async function Logout(formData) {
-    const cookieStore = await cookies();
-    cookieStore.delete("user-id");
+    deleteSession();
     permanentRedirect("/");
 }
