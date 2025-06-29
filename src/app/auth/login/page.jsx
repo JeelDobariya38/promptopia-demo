@@ -1,12 +1,14 @@
+"use client";
+
 import { SubmitButton } from "@components/submitbutton";
 import Link from "next/link";
 import { Login } from "@app/auth/authController";
+import { useSearchParams } from "next/navigation";
 
-export const metadata = {
-  title: "Login | Promptopia",
-};
+export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
 
-export default function SignupPage() {
   return (
     <section className="md:w-1/2 w-full">
       <div className="sm:text-4xl w-full mt-5 text-2xl font-black">
@@ -17,6 +19,14 @@ export default function SignupPage() {
       </div>
 
       <div className="my-5 p-4 rounded-4xl bg-slate-800">
+        {message && (
+          <div className="mb-2 rounded-lg bg-slate-900 border-4 border-slate-950">
+            <p className="text-lg text-center text-rose-700">
+              Error: {message}
+            </p>
+          </div>
+        )}
+
         <form className="flex flex-col gap-3 sm:text-lg text-sm" action={Login}>
           <div>
             <label htmlFor="username">Username:</label>
