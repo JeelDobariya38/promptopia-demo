@@ -1,6 +1,5 @@
 import { getPost, updatePostForm } from "@app/posts/postController";
 import { SubmitButton } from "@components/submitbutton";
-import executeAction from "@lib/executeAction";
 import { redirect } from "next/navigation";
 
 export const metadata = {

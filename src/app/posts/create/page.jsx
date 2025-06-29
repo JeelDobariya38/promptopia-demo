@@ -1,6 +1,5 @@
 import { createPostForm } from "@app/posts/postController";
 import { SubmitButton } from "@components/submitbutton";
-import executeAction from "@lib/executeAction";
 
 export const metadata = {
   title: "Create | Promptopia",
