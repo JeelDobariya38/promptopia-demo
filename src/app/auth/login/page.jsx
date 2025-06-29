@@ -47,7 +47,7 @@ export default function SignupPage() {
 
         <div>
           <p>
-            Don't have a account?{" "}
+            Don{"'"}t have a account?{" "}
             <Link href="/auth/signup" className="text-sky-500">
               Sign Up
             </Link>

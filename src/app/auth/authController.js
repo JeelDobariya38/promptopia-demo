@@ -5,6 +5,16 @@ import { createSession, deleteSession } from "@lib/session";
 import { permanentRedirect, redirect } from "next/navigation";
 
 
+export async function getUserById(id) {
+    let user = await prisma.users.findUnique({
+        where: {
+            id,
+        },
+    });
+
+    return user;
+}
+
 export async function Signup(formData) {
     let username = formData.get('username');
     let email = formData.get('email');
@@ -57,6 +67,6 @@ export async function Login(formData) {
 }
 
 export async function Logout(formData) {
-    deleteSession();
+    await deleteSession();
     permanentRedirect("/");
 }

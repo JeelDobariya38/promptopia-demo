@@ -1,6 +1,7 @@
 'use server';
 
 import prisma from "@lib/prisma";
+import { getUserID } from "@lib/session";
 import { permanentRedirect } from "next/navigation";
 
 
@@ -52,6 +53,7 @@ export async function getPostsByTags(searchString) {
 }
 
 export async function createPostForm(formData) {
+    let usersId = await getUserID();
     let title = formData.get('title');
     let prompt = formData.get('prompt');
     let tags = formData.get('tags');
@@ -61,7 +63,12 @@ export async function createPostForm(formData) {
             data: {
                 title,
                 prompt,
-                tags
+                tags,
+                author: {
+                    connect: {
+                        id: usersId
+                    }
+                },
             },
         });
 
