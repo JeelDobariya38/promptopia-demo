@@ -1,5 +1,7 @@
-import { Logout } from "@app/auth/authController";
+import { deleteSession } from "@lib/session";
+import { redirect } from "next/navigation";
 
 export async function GET() {
-    await Logout();
+    await deleteSession();
+    redirect("/auth/login");
 }

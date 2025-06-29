@@ -41,7 +41,7 @@ export async function Signup(formData) {
     });
 
     await createSession(user.id);
-    permanentRedirect("/");
+    return permanentRedirect("/");
 }
 
 export async function Login(formData) {
@@ -64,9 +64,4 @@ export async function Login(formData) {
     }
 
     return redirect("/auth/login?message=invalid-password");
-}
-
-export async function Logout(formData) {
-    await deleteSession();
-    permanentRedirect("/");
 }

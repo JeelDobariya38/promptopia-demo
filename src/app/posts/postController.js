@@ -72,9 +72,9 @@ export async function createPostForm(formData) {
             },
         });
 
-        permanentRedirect(`/posts/${post.id}`);
+        return permanentRedirect(`/posts/${post.id}`);
     } else {
-        permanentRedirect("/create");
+        return permanentRedirect("/create");
     }
 }
 
@@ -97,10 +97,10 @@ export async function updatePostForm(formData) {
     });
 
     if (updatedPost) {
-        permanentRedirect(`/posts/${updatedPost.id}`);
+        return permanentRedirect(`/posts/${updatedPost.id}`);
     }
 
-    permanentRedirect("/");
+    return permanentRedirect("/");
 }
 
 
@@ -113,5 +113,5 @@ export async function deletePostForm(formData) {
         },
     });
 
-    permanentRedirect("/");
+    return permanentRedirect("/");
 }
