@@ -2,7 +2,7 @@
 
 import prisma from "@lib/prisma";
 import { getUserID } from "@lib/session";
-import { permanentRedirect } from "next/navigation";
+import { permanentRedirect, redirect } from "next/navigation";
 
 
 export async function getPosts(limit) {
@@ -106,6 +106,12 @@ export async function updatePostForm(formData) {
 
 export async function deletePostForm(formData) {
     let id = formData.get("postid");
+    let post = await getPost(id);
+    let currUserID = await getUserID();
+
+    if (post.userId != currUserID) {
+        return redirect(`/posts/${id}`);
+    }
 
     await prisma.posts.delete({
         where: {
