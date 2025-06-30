@@ -2,7 +2,7 @@ import Link from "next/link";
 import PostCard from "@components/postcard";
 
 export default function Feed({ posts, showdetails }) {
-  if (posts.length === 0) {
+  if (posts.length === 0 && showdetails) {
     return (
       <div className="my-4 flex justify-center gap-5">
         <Link href="/" prefetch={false} className="filled_blue_btn">
