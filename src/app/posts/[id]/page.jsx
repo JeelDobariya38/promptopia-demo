@@ -3,23 +3,23 @@ import { redirect } from "next/navigation";
 import PostCard from "@components/postcard";
 
 export const metadata = {
-  title: "Posts | Promptopia",
+    title: "Posts | Promptopia",
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function PostPage({ params }) {
-  const { id } = await params;
+    let { id } = await params;
+    id = parseInt(id);
+    let post = await getPost(id);
 
-  let post = await getPost(id);
+    if (!post) {
+        redirect("/");
+    }
 
-  if (!post) {
-    redirect("/");
-  }
-
-  return (
-    <div className="w-1/2 min-w-3xs">
-      <PostCard post={post} />
-    </div>
-  );
+    return (
+        <div className='w-1/2 min-w-3xs'>
+            <PostCard post={post} />
+        </div>
+    );
 }
