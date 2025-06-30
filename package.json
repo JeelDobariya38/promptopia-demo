@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma db push --schema=prisma/mongodbSchema.prisma && prisma db push --schema=prisma/sqliteSchema.prisma",
+    "postinstall": "node db-setup.js",
     "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma",
-    "migrate": "prisma migrate dev --schema=prisma/sqliteSchema.prisma"
+    "migrate": "prisma migrate dev --schema=prisma/sqliteSchema.prisma",
+    "db:setup": "node db-setup.js"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
+    "dotenv": "^17.0.0",
     "jose": "^6.0.11",
     "next": "15.3.3",
     "react": "^19.0.0",
