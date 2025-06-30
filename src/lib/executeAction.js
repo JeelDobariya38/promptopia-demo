@@ -1,7 +1,6 @@
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 
-
-export default executeAction = async (actionFn, successMessage) => {
+export default async function executeAction(actionFn, successMessage = "Run successfully!!") {
     try {
         await actionFn();
 

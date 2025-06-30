@@ -1,7 +1,8 @@
 'use server';
 
 import prisma from "@lib/prisma";
-import { permanentRedirect } from "next/navigation";
+import { getUserID } from "@lib/session";
+import { permanentRedirect, redirect } from "next/navigation";
 
 
 export async function getPosts(limit) {
@@ -52,6 +53,7 @@ export async function getPostsByTags(searchString) {
 }
 
 export async function createPostForm(formData) {
+    let usersId = await getUserID();
     let title = formData.get('title');
     let prompt = formData.get('prompt');
     let tags = formData.get('tags');
@@ -61,13 +63,18 @@ export async function createPostForm(formData) {
             data: {
                 title,
                 prompt,
-                tags
+                tags,
+                author: {
+                    connect: {
+                        id: usersId
+                    }
+                },
             },
         });
 
-        permanentRedirect(`/posts/${post.id}`);
+        return permanentRedirect(`/posts/${post.id}`);
     } else {
-        permanentRedirect("/create");
+        return permanentRedirect("/create");
     }
 }
 
@@ -90,15 +97,21 @@ export async function updatePostForm(formData) {
     });
 
     if (updatedPost) {
-        permanentRedirect(`/posts/${updatedPost.id}`);
+        return permanentRedirect(`/posts/${updatedPost.id}`);
     }
 
-    permanentRedirect("/");
+    return permanentRedirect("/");
 }
 
 
 export async function deletePostForm(formData) {
     let id = formData.get("postid");
+    let post = await getPost(id);
+    let currUserID = await getUserID();
+
+    if (post.userId != currUserID) {
+        return redirect(`/posts/${id}`);
+    }
 
     await prisma.posts.delete({
         where: {
@@ -106,5 +119,5 @@ export async function deletePostForm(formData) {
         },
     });
 
-    permanentRedirect("/");
+    return permanentRedirect("/");
 }

@@ -1,20 +1,35 @@
-import Link from 'next/link';
+import Link from "next/link";
 import PostCard from "@components/postcard";
 
-export default function Feed({ posts }) {
+export default function Feed({ posts, showdetails }) {
+  if (posts.length === 0) {
     return (
-        <div className='flex flex-wrap justify-center gap-4'>
-            {
-                posts ? (
-                    posts.map(post => (
-                        <div key={post.id}>
-                            <Link href={`/posts/${post.id}`} className="block sm:w-100 sm:h-100 w-50 h-50">
-                                <PostCard post={post} />
-                            </Link>
-                        </div>
-                    ))
-                ): undefined
-            }
-        </div>
-    )
+      <div className="my-4 flex justify-center gap-5">
+        <Link href="/" prefetch={false} className="filled_blue_btn">
+          Back Home
+        </Link>
+        <Link href="/posts/create" prefetch={false} className="filled_blue_btn">
+          Create Post
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap justify-center gap-4">
+      {posts
+        ? posts.map((post) => (
+            <div key={post.id} className="block sm:w-100 sm:h-100 w-50 h-50">
+              {!showdetails ? (
+                <Link href={`/posts/${post.id}`} prefetch={false}>
+                  <PostCard post={post} details={showdetails} />
+                </Link>
+              ) : (
+                <PostCard post={post} details={showdetails} />
+              )}
+            </div>
+          ))
+        : undefined}
+    </div>
+  );
 }
