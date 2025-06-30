@@ -9,9 +9,7 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function PostPage({ params }) {
-  let params = await params;
-
-  const id = parseInt(params.id);
+  const { id } = await params;
   let post = await getPost(id);
 
   if (!post) {
