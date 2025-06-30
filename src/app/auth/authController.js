@@ -39,7 +39,6 @@ export async function Signup(formData) {
         },
     });
 
-    console.log(user);
     await createSession(user.id);
     return permanentRedirect("/");
 }
@@ -59,7 +58,6 @@ export async function Login(formData) {
     }
 
     if (user.password == password) {
-        console.log(user);
         await createSession(user.id);
         return permanentRedirect("/");
     }
