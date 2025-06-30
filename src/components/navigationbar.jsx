@@ -1,6 +1,9 @@
+import { verifySession } from "@lib/session";
 import Link from "next/link";
 
-export default function NavigationBar() {
+export default async function NavigationBar() {
+  let { isAuth } = await verifySession();
+
   return (
     <>
       <div className="sm:text-4xl w-full mt-5 text-2xl font-black">
@@ -16,14 +19,35 @@ export default function NavigationBar() {
         </p>
       </div>
 
-      <div className="my-4 flex justify-center gap-5">
-        <Link href="/profile" prefetch={false} className="filled_blue_btn">
-          My Profile
-        </Link>
-        <Link href="/posts/create" prefetch={false} className="filled_blue_btn">
-          Create Post
-        </Link>
-      </div>
+      {!isAuth && (
+        <div className="my-4 flex justify-center gap-5">
+          <Link href="/auth/login" prefetch={false} className="filled_blue_btn">
+            Login
+          </Link>
+          <Link
+            href="/auth/signup"
+            prefetch={false}
+            className="filled_blue_btn"
+          >
+            Create Account
+          </Link>
+        </div>
+      )}
+
+      {isAuth && (
+        <div className="my-4 flex justify-center gap-5">
+          <Link href="/profile" prefetch={false} className="filled_blue_btn">
+            My Profile
+          </Link>
+          <Link
+            href="/posts/create"
+            prefetch={false}
+            className="filled_blue_btn"
+          >
+            Create Post
+          </Link>
+        </div>
+      )}
     </>
   );
 }
