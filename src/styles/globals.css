@@ -43,6 +43,10 @@ body {
   @apply text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-sky-800 dark:hover:bg-sky-950 focus:outline-none;
 }
 
+.filled_red_btn {
+  @apply text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-800 dark:hover:bg-red-950 focus:outline-none;
+}
+
 .red_bule_gradient {
   background: hsla(27, 100%, 86%, 1);
 
