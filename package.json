@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma db push --schema=prisma/mongodbSchema.prisma && prisma db push --schema=prisma/sqliteSchema.prisma",
-    "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma"
+    "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma",
+    "migrate": "prisma migrate dev --schema=prisma/sqliteSchema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
