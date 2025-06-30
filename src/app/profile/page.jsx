@@ -2,6 +2,7 @@ import { getUserById } from "@app/auth/authController";
 import Feed from "@components/feed";
 import prisma from "@lib/prisma";
 import { getUserID } from "@lib/session";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -24,7 +25,7 @@ export default async function Profile() {
     <section className="p-4 bg-gray-950 border-1 border-sky-800 rounded-lg preserve-lines">
       <div className="flex justify-left gap-4 my-2 py-2">
         <div>
-          <img
+          <Image
             src="/profile.png"
             alt="profile"
             width={100}
