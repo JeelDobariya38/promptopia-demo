@@ -10,7 +10,6 @@ export const dynamic = "force-dynamic";
 
 export default async function PostPage({ params }) {
   const { id } = await params;
-
   let post = await getPost(id);
 
   if (!post) {
