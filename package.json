@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm run setup && next dev --turbopack",
+    "build": "npm run setup && next build",
+    "start": "npm run setup && next start",
     "lint": "next lint",
-    "postinstall": "node db-setup.js",
+    "setup": "node scripts/setup.js",
     "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma",
-    "migrate": "prisma migrate dev --schema=prisma/sqliteSchema.prisma",
-    "db:setup": "node db-setup.js"
+    "migrate": "prisma migrate dev --schema=prisma/sqliteSchema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
