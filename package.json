@@ -2,10 +2,11 @@
   "name": "promptopia-demo",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npm run setup && next dev --turbopack",
     "build": "npm run setup && next build",
-    "start": "next start",
+    "start": "npm run setup && next start",
     "lint": "next lint",
     "setup": "node scripts/setup.js",
     "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma",

@@ -17,9 +17,9 @@ RUN npm install --frozen-lockfile
 # Copy the rest of the application code
 COPY . .
 
-ARG DATABASE_TYPE="sqlite"
-ARG DATABASE_URL_SQLITE="file:./promptopia.db"
-ARG SESSION_SECRET="your_secret"
+ENV DATABASE_TYPE="sqlite"
+ENV DATABASE_URL_SQLITE="file:./promptopia.db"
+ENV SESSION_SECRET="your_secret"
 
 # Set build-time argument for Next.js telemetry (optional, but good practice)
 ARG NEXT_TELEMETRY_DISABLED=1
@@ -28,7 +28,11 @@ ARG NEXT_TELEMETRY_DISABLED=1
 # The 'build' script now includes 'npm run setup' which handles Prisma client generation/migrations
 RUN npm run build
 
+
+
 # ==============================================================================================================
+
+
 
 # Stage 2: Run the Next.js application
 FROM node:22-alpine AS runner
@@ -46,13 +50,24 @@ COPY --from=builder /app/.next ./.next
 
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/src/generated ./src/generated
+COPY --from=builder /app/scripts ./scripts
 
+
+# Important Warning: NONE CHANGEABLES (probably because it depends on BUILDER STAGE above in this docker file)..
+#          Have a look around into codebase and into previous stages in dockerfile... before change them...
 ENV NODE_ENV="production"
 ENV DATABASE_TYPE="sqlite"
 ENV DATABASE_URL_SQLITE="file:./promptopia.db"
 
+
+# CHANGEABLES (recommended to change)
+ENV LOGGING="verbose"
+ENV SESSION_SECRET="example_session_secret"
+
+
 # Expose the port Next.js runs on (default is 3000)
 EXPOSE 3000
+
 
 # Set the command to start the Next.js application in production mode
 CMD ["npm", "start"]
