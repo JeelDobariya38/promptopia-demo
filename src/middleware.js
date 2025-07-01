@@ -2,7 +2,7 @@ import { verifySession } from '@lib/session';
 import { NextResponse } from 'next/server';
 
 function logRequest(method, requestType, pathname, middlewareOutcome) {
-    if (process.env.LOGGING) {
+    if (process.env.LOGGING == "verbose") {
         console.log(`[${method}] [${requestType}] ${pathname} -> [${middlewareOutcome}]`);
     }
 }
