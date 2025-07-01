@@ -43,10 +43,6 @@ function executeCommand(command) {
 
 
 function verifyEssentialEnvs() {
-    if (!process.env.SESSION_SECRET) {
-        throw new Error(`Error: SESSION_SECRET Not Present.`);
-    }
-
     if (!process.env.DATABASE_TYPE) {
         throw new Error(`Error: DATABASE_TYPE Not Present.`);
     }
