@@ -35,10 +35,10 @@ Promptopia is packed with modern features for managing and sharing prompts:
 
 ## 🔮 Upcoming Features
 
-* ✅ **Unit Testing** – Improve reliability and confidence with test coverage.
-* 📝 **Comprehensive Documentation** – Easier setup and collaboration.
-* 🧑‍💻 **TypeScript Migration** – Enhance type safety and development experience.
-* 🐳 **MongoDB Docker Support** – Add Docker support for MongoDB (currently available for SQLite).
+- [ ] ✅ **Unit Testing** – Improve reliability and confidence with test coverage.
+- [ ] 📝 **Comprehensive Documentation** – Easier setup and collaboration.
+- [ ] 🧑‍💻 **TypeScript Migration** – Enhance type safety and development experience.
+- [ ] 🐳 **MongoDB Docker Support** – Add Docker support for MongoDB (currently available for SQLite).
 
 ---
 
