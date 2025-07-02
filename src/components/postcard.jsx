@@ -15,6 +15,13 @@ export default function PostCard({ post, details }) {
         <span className="font-medium">Tags: </span> {post.tags}
       </p>
 
+      {!details && (
+        <p className="text-gray-500 text-sm mb-1">
+          <span className="font-medium">Written By: </span>
+          {post.author.username}
+        </p>
+      )}
+
       {details && (
         <>
           <p className="text-gray-500 text-xs">

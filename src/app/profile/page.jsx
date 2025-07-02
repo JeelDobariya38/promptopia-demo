@@ -23,7 +23,7 @@ export default async function Profile() {
 
   return (
     <section className="p-4 bg-gray-950 border-1 border-sky-800 rounded-lg preserve-lines">
-      <div className="flex justify-left gap-4 my-2 py-2">
+      <div className="sm:flex justify-left gap-4 my-2 py-2">
         <div>
           <Image
             src="/profile.png"

@@ -9,6 +9,9 @@ export async function getPosts(limit) {
     let posts = await prisma.posts.findMany({
         skip: 0,
         take: limit,
+        include: {
+            author: true,
+        },
     });
 
     return posts;
@@ -19,6 +22,9 @@ export async function getPost(id) {
     let post = await prisma.posts.findFirst({
         where: {
             id,
+        },
+        include: {
+            author: true,
         },
     });
 
@@ -36,16 +42,19 @@ export async function getPostsByTags(searchString) {
                 {
                     prompt: {
                         contains: searchString,
-                        mode: 'insensitive',
+                        // mode: 'insensitive',
                     },
                 },
                 {
                     tags: {
                         contains: searchString,
-                        mode: 'insensitive',
+                        // mode: 'insensitive',
                     },
                 },
             ],
+        },
+        include: {
+            author: true,
         },
     });
 
@@ -69,7 +78,7 @@ export async function createPostForm(formData) {
                         id: usersId
                     }
                 },
-            },
+            }
         });
 
         return permanentRedirect(`/posts/${post.id}`);
