@@ -2,7 +2,7 @@
 
 import prisma from "@lib/prisma";
 import { getUserID } from "@lib/session";
-import { permanentRedirect, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 
 export async function getPosts(limit) {
@@ -81,9 +81,9 @@ export async function createPostForm(formData) {
             }
         });
 
-        return permanentRedirect(`/posts/${post.id}`);
+        return redirect(`/posts/${post.id}`);
     } else {
-        return permanentRedirect("/create");
+        return redirect("/create");
     }
 }
 
@@ -106,10 +106,10 @@ export async function updatePostForm(formData) {
     });
 
     if (updatedPost) {
-        return permanentRedirect(`/posts/${updatedPost.id}`);
+        return redirect(`/posts/${updatedPost.id}`);
     }
 
-    return permanentRedirect("/");
+    return redirect("/");
 }
 
 
@@ -128,5 +128,5 @@ export async function deletePostForm(formData) {
         },
     });
 
-    return permanentRedirect("/");
+    return redirect("/");
 }
