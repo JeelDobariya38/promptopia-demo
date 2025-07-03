@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 
 export async function getUserById(id) {
-    let user = await prisma.users.findUnique({
+    let user = await prisma.user.findUnique({
         where: {
             id,
         },
@@ -21,7 +21,7 @@ export async function Signup(formData) {
     let password = formData.get('password');
 
     // Validation
-    let user = await prisma.users.findUnique({
+    let user = await prisma.user.findUnique({
         where: {
             username,
         },
@@ -32,7 +32,7 @@ export async function Signup(formData) {
     }
 
     // Creation
-    user = await prisma.users.create({
+    user = await prisma.user.create({
         data: {
             username,
             email,
@@ -48,7 +48,7 @@ export async function Login(formData) {
     let username = formData.get('username');
     let password = formData.get('password');
 
-    let user = await prisma.users.findFirst({
+    let user = await prisma.user.findFirst({
         where: {
             username,
         },

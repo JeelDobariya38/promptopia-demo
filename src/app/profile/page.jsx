@@ -15,7 +15,7 @@ export default async function Profile() {
   let userId = await getUserID();
   let user = await getUserById(userId);
 
-  let posts = await prisma.posts.findMany({
+  let posts = await prisma.post.findMany({
     where: {
       userId,
     },
