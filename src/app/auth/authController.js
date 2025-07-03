@@ -1,8 +1,8 @@
 'use server';
 
 import prisma from "@lib/prisma";
-import { createSession, deleteSession } from "@lib/session";
-import { permanentRedirect, redirect } from "next/navigation";
+import { createSession } from "@lib/session";
+import { redirect } from "next/navigation";
 
 
 export async function getUserById(id) {
@@ -41,7 +41,7 @@ export async function Signup(formData) {
     });
 
     await createSession(user.id);
-    return permanentRedirect("/");
+    return redirect("/",);
 }
 
 export async function Login(formData) {
@@ -60,7 +60,7 @@ export async function Login(formData) {
 
     if (user.password == password) {
         await createSession(user.id);
-        return permanentRedirect("/");
+        return redirect("/");
     }
 
     return redirect("/auth/login?message=invalid-password");
