@@ -63,7 +63,7 @@ export default function FeedWithSearch({ initialPosts }) {
         </div>
       )}
 
-      <Feed posts={posts} showdetails={false} />
+      {!loading && <Feed posts={posts} showdetails={false} />}
     </div>
   );
 }
