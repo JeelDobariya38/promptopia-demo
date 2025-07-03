@@ -22,7 +22,7 @@ export default async function Profile() {
   });
 
   return (
-    <section className="p-4 bg-gray-950 border-1 border-sky-800 rounded-lg preserve-lines">
+    <section className="md:p-4 p-2 bg-gray-950 border-1 border-sky-800 rounded-lg preserve-lines">
       <div className="sm:flex justify-left gap-4 my-2 py-2">
         <div>
           <Image
@@ -34,9 +34,11 @@ export default async function Profile() {
           />
         </div>
         <div className="text-pink-500">
-          <h2 className="text-6xl font-black">{user.username}</h2>
-          <p className="text-2xl">{user.email}</p>
-          <p className="text-lg text-pink-100">
+          <h2 className="md:text-6xl text-2xl sm:font-black font-bold">
+            {user.username}
+          </h2>
+          <p className="md:text-2xl text-md">{user.email}</p>
+          <p className="md:text-lg text-xs text-pink-100">
             Joined AT: {new Date(user.createdAt).toLocaleDateString()}
           </p>
         </div>
