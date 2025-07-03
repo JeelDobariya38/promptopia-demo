@@ -70,7 +70,7 @@ function executeCommand(command) {
  * Runs the setup for the SQLite database.
  * @returns {Promise<void>}
  */
-async function runSqliteDBSetup() {
+export async function runSqliteDBSetup() {
     conditionalLog('--- Setting Up SQLite Database ---');
     const sqliteSchemaPath = path.join('prisma', 'sqliteSchema.prisma');
 
@@ -88,7 +88,7 @@ async function runSqliteDBSetup() {
  * Runs the setup for the MongoDB database.
  * @returns {Promise<void>}
  */
-async function runMongoDBSetup() {
+export async function runMongoDBSetup() {
     conditionalLog('--- Setting Up MongoDB Database ---');
     const mongodbSchemaPath = path.join('prisma', 'mongodbSchema.prisma');
 

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "npm run setup && next dev --turbopack",
-    "build": "npm run setup && next build",
-    "start": "npm run setup && next start",
+    "build": "npm run setup && next build && node scripts/production-setup.js",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "setup": "node scripts/setup.js",
     "generate": "prisma generate --schema=prisma/mongodbSchema.prisma && prisma generate --schema=prisma/sqliteSchema.prisma",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "cpy": "^11.1.0",
     "eslint": "9.29.0",
     "eslint-config-next": "15.3.3",
     "prisma": "^6.10.1",
