@@ -33,7 +33,11 @@ export async function getPost(id) {
 
 export async function getPostsByTags(searchString) {
     if (!searchString) {
-        return await prisma.post.findMany();
+        return await prisma.post.findMany({
+            include: {
+                author: true,
+            },
+        });
     }
 
     const posts = await prisma.post.findMany({
@@ -42,13 +46,11 @@ export async function getPostsByTags(searchString) {
                 {
                     prompt: {
                         contains: searchString,
-                        // mode: 'insensitive',
                     },
                 },
                 {
                     tags: {
                         contains: searchString,
-                        // mode: 'insensitive',
                     },
                 },
             ],
