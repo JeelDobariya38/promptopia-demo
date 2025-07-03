@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Users" (
+CREATE TABLE "User" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE "Users" (
 );
 
 -- CreateTable
-CREATE TABLE "Posts" (
+CREATE TABLE "Post" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "prompt" TEXT NOT NULL,
@@ -17,8 +17,8 @@ CREATE TABLE "Posts" (
     "createdAt" DATETIME DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     "userId" TEXT NOT NULL,
-    CONSTRAINT "Posts_userId_fkey" FOREIGN KEY ("userId") REFERENCES "Users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Users_username_key" ON "Users"("username");
+CREATE UNIQUE INDEX "User_username_key" ON "User"("username");

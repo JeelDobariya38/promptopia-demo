@@ -1,7 +1,9 @@
 # Testing Log
 
-We are logging test here
+We are logging test here...
 
-- Sqlite + Docker
-- Sqlite + NextJS Build
-- Mongodb + NextJS Build
+(03-07-2025)
+
+- Sqlite + Docker ✅
+- Sqlite + NextJS Build ✅
+- Mongodb + NextJS Build ✅

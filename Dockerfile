@@ -4,8 +4,8 @@
 # Define the Node.js version as a build argument
 ARG NODE_VERSION=22-alpine
 
-# Stage 1: Build Environment
-FROM node:${NODE_VERSION} AS builder
+# Stage 1: Dependency Environment
+FROM node:${NODE_VERSION} AS deps
 
 WORKDIR /app
 
@@ -16,13 +16,28 @@ COPY package.json package-lock.json ./
 # Use --frozen-lockfile for consistent installs
 RUN npm install --frozen-lockfile
 
-# Copy application source code
+
+# --------------------------------------------------------------------------------------------------
+
+
+# Stage 2: Build Environment
+FROM node:${NODE_VERSION} AS builder
+
+WORKDIR /app
+
+# Copy node modules files
+COPY --from=deps /app/node_modules ./node_modules
+
+# App Files
 COPY . .
 
 # Define build-time arguments for setup script
 ARG SESSION_SECRET="your_secret"
 
+# Set Enviroment Variables
 # Set environment variables from ARGs so setup.js can access them during the build
+# Important Warning: NONE CHANGEABLES (probably because it depends on BUILDER STAGE above in this docker file)..
+#           Have a look around into codebase and into previous stages in dockerfile... before change them...
 ENV DATABASE_TYPE="sqlite"
 ENV DATABASE_URL_SQLITE="file:./promptopia.db"
 ENV SESSION_SECRET=${SESSION_SECRET}
@@ -38,36 +53,20 @@ RUN npm run build
 # --------------------------------------------------------------------------------------------------
 
 
-# Stage 2: Runtime Environment
+# Stage 3: Runtime Environment
 FROM node:${NODE_VERSION} AS runner
 
 WORKDIR /app
 
-# Copy dependency manifest files
+# Copy production build files
+COPY --from=builder /app/.next/standalone .next/standalone
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/package-lock.json ./package-lock.json
-
-# Install production dependencies only
-# Use --frozen-lockfile for consistent installs
-RUN npm install --frozen-lockfile --omit-dev
-
-# Copy build artifacts and necessary runtime files
-# Application File
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-
-# Database File
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/src/generated ./src/generated
-COPY --from=builder /app/scripts ./scripts
-
 
 # Important Warning: NONE CHANGEABLES (probably because it depends on BUILDER STAGE above in this docker file)..
 #           Have a look around into codebase and into previous stages in dockerfile... before change them...
 ENV NODE_ENV="production"
 ENV DATABASE_TYPE="sqlite"
 ENV DATABASE_URL_SQLITE="file:./promptopia.db"
-
 
 # CHANGEABLES (recommended to change)
 ENV LOGGING="verbose"
@@ -77,5 +76,4 @@ ENV SESSION_SECRET="example_session_secret"
 EXPOSE 3000
 
 # Command to start the application
-# The 'start' script includes database setup (Prisma client generation/migrations)
 CMD ["npm", "start"]
