@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 
 export async function getPosts(limit) {
-    let posts = await prisma.posts.findMany({
+    let posts = await prisma.post.findMany({
         skip: 0,
         take: limit,
         include: {
@@ -19,7 +19,7 @@ export async function getPosts(limit) {
 
 
 export async function getPost(id) {
-    let post = await prisma.posts.findFirst({
+    let post = await prisma.post.findFirst({
         where: {
             id,
         },
@@ -33,10 +33,10 @@ export async function getPost(id) {
 
 export async function getPostsByTags(searchString) {
     if (!searchString) {
-        return await prisma.posts.findMany();
+        return await prisma.post.findMany();
     }
 
-    const posts = await prisma.posts.findMany({
+    const posts = await prisma.post.findMany({
         where: {
             OR: [
                 {
@@ -68,7 +68,7 @@ export async function createPostForm(formData) {
     let tags = formData.get('tags');
 
     if (title && prompt && tags) {
-        const post = await prisma.posts.create({
+        const post = await prisma.post.create({
             data: {
                 title,
                 prompt,
@@ -94,7 +94,7 @@ export async function updatePostForm(formData) {
     let prompt = formData.get('prompt');
     let tags = formData.get('tags');
 
-    const updatedPost = await prisma.posts.update({
+    const updatedPost = await prisma.post.update({
         where: {
             id,
         },
@@ -122,7 +122,7 @@ export async function deletePostForm(formData) {
         return redirect(`/posts/${id}`);
     }
 
-    await prisma.posts.delete({
+    await prisma.post.delete({
         where: {
             id,
         },
