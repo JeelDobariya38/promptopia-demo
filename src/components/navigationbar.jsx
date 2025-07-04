@@ -20,6 +20,36 @@ export default async function NavigationBar() {
           An open source, AI prompt sharing tool.
         </p>
       </div>
+
+      {!isAuth && (
+        <div className="my-4 flex justify-center gap-5">
+          <Link href="/auth/login" prefetch={false} className="filled_blue_btn">
+            Login
+          </Link>
+          <Link
+            href="/auth/signup"
+            prefetch={false}
+            className="filled_blue_btn"
+          >
+            Create Account
+          </Link>
+        </div>
+      )}
+
+      {isAuth && (
+        <div className="my-4 flex justify-center gap-5">
+          <Link href="/profile" prefetch={false} className="filled_blue_btn">
+            My Profile
+          </Link>
+          <Link
+            href="/posts/create"
+            prefetch={false}
+            className="filled_blue_btn"
+          >
+            Create Post
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

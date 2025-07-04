@@ -11,7 +11,7 @@ export async function middleware(request) {
     const { pathname } = request.nextUrl;
     const method = request.method;
 
-    const publicPaths = ["/"];
+    const publicPaths = ["/", "/api/session"];
     const authPaths = ["/auth/signup", "/auth/login"]; // Paths where authentication is handled
 
     if (publicPaths.includes(pathname)) {
