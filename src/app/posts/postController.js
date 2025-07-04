@@ -12,6 +12,9 @@ export async function getPosts(limit) {
         include: {
             author: true,
         },
+        orderBy: {
+            createdAt: "desc"
+        }
     });
 
     return posts;
@@ -31,37 +34,37 @@ export async function getPost(id) {
     return post;
 }
 
-export async function getPostsByTags(searchString) {
-    if (!searchString) {
-        return await prisma.post.findMany({
-            include: {
-                author: true,
-            },
-        });
-    }
+// export async function getPostsByTags(searchString) {
+//     if (!searchString) {
+//         return await prisma.post.findMany({
+//             include: {
+//                 author: true,
+//             },
+//         });
+//     }
 
-    const posts = await prisma.post.findMany({
-        where: {
-            OR: [
-                {
-                    prompt: {
-                        contains: searchString,
-                    },
-                },
-                {
-                    tags: {
-                        contains: searchString,
-                    },
-                },
-            ],
-        },
-        include: {
-            author: true,
-        },
-    });
+//     const posts = await prisma.post.findMany({
+//         where: {
+//             OR: [
+//                 {
+//                     prompt: {
+//                         contains: searchString,
+//                     },
+//                 },
+//                 {
+//                     tags: {
+//                         contains: searchString,
+//                     },
+//                 },
+//             ],
+//         },
+//         include: {
+//             author: true,
+//         },
+//     });
 
-    return posts;
-}
+//     return posts;
+// }
 
 export async function createPostForm(formData) {
     let usersId = await getUserID();
