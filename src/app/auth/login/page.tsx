@@ -1,8 +1,8 @@
 "use client";
 
-import { SubmitButton } from "@components/submitbutton";
+import { SubmitButton } from "@/components/submitbutton";
 import Link from "next/link";
-import { Login } from "@app/auth/authController";
+import { Login } from "@/app/auth/authController";
 import { useSearchParams } from "next/navigation";
 
 export default function LoginPage() {

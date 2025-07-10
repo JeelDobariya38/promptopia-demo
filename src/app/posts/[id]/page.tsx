@@ -1,6 +1,6 @@
-import { getPost } from "@app/posts/postController";
+import { getPost } from "@/app/posts/postController";
 import { redirect } from "next/navigation";
-import PostCard from "@components/postcard";
+import PostCard from "@/components/postcard";
 
 export const metadata = {
   title: "Posts | Promptopia",
@@ -8,7 +8,11 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function PostPage({ params }) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   let post = await getPost(id);
 

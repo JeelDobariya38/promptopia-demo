@@ -1,8 +1,15 @@
-import { deletePostForm } from "@app/posts/postController";
+import { deletePostForm } from "@/app/posts/postController";
 import Link from "next/link";
 import { SubmitButton } from "./submitbutton";
+import { PostWithUser } from "@/lib/prisma";
 
-export default function PostCard({ post, details }) {
+export default function PostCard({
+  post,
+  details,
+}: {
+  post: PostWithUser;
+  details?: Boolean;
+}) {
   post.prompt.replace(/(?:\r\n|\r|\n)/g, "<br />");
 
   return (
@@ -30,7 +37,7 @@ export default function PostCard({ post, details }) {
         <>
           <p className="text-gray-500 text-[10px] sm:text-xs break-words">
             <span className="font-medium">Created: </span>{" "}
-            {new Date(post.createdAt).toLocaleDateString()}
+            {new Date().toLocaleDateString()}
           </p>
 
           <div className="my-2 flex flex-col flex-row gap-2">
@@ -44,7 +51,7 @@ export default function PostCard({ post, details }) {
 
             <form action={deletePostForm} className="w-full sm:w-auto">
               <input type="hidden" name="postid" defaultValue={post.id} />
-              <SubmitButton value="Delete" className="w-full sm:w-auto" />
+              <SubmitButton value="Delete" buttonStyle="w-full sm:w-auto" />
             </form>
           </div>
         </>

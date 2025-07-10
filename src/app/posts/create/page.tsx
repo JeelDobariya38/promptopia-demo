@@ -1,5 +1,5 @@
-import { createPostForm } from "@app/posts/postController";
-import { SubmitButton } from "@components/submitbutton";
+import { createPostForm } from "@/app/posts/postController";
+import { SubmitButton } from "@/components/submitbutton";
 
 export const metadata = {
   title: "Create | Promptopia",

@@ -1,6 +1,6 @@
-import NavigationBar from "@components/navigationbar";
-import { getPosts } from "@app/posts/postController";
-import FeedWithSearch from "@components/feedwithsearch";
+import NavigationBar from "@/components/navigationbar";
+import { getPosts } from "@/app/posts/postController";
+import FeedWithSearch from "@/components/feedwithsearch";
 
 export const metadata = {
   title: "Posts | Promptopia",

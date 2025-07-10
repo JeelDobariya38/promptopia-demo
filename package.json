@@ -1,7 +1,10 @@
 {
   "name": "promptopia-demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "npm run setup && next dev --turbopack",
     "build": "npm run setup && next build && node scripts/production-setup.js",
@@ -21,10 +24,14 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/node": "^24.0.12",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "cpy": "^11.1.0",
     "eslint": "9.29.0",
     "eslint-config-next": "15.3.3",
     "prisma": "^6.10.1",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3"
   }
 }

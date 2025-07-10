@@ -16,7 +16,7 @@ model User {
     username  String    @unique
     email     String
     password  String
-    createdAt DateTime? @default(now())
+    createdAt DateTime @default(now())
     updatedAt DateTime  @updatedAt
     Posts     Post[]
 }
@@ -26,7 +26,7 @@ model Post {
     title     String
     prompt    String
     tags      String
-    createdAt DateTime? @default(now())
+    createdAt DateTime @default(now())
     updatedAt DateTime  @updatedAt
     author    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId    String
