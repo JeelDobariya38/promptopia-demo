@@ -18,7 +18,7 @@ export default async function Profile() {
   let user: User | null = await getUserById(userId);
 
   if (!user) {
-    return redirect("/");
+    return redirect("/auth/logout");
   }
 
   let posts: PostWithUser[] | null = await prisma.post.findMany({
