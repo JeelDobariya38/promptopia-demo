@@ -1,13 +1,11 @@
-'use server';
+"use server";
 
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 
-
 type ActionResponse = {
-    success: boolean;
-    message: string;
-}
-
+  success: boolean;
+  message: string;
+};
 
 /**
  * Executes an asynchronous action function and handles its success or error state.
@@ -19,26 +17,26 @@ type ActionResponse = {
  * @throws If the `actionFn` throws a Next.js redirect error, it re-throws it to be handled by Next.js.
  */
 export default async function executeAction(
-    actionFn: () => Promise<void> | Promise<any>,
-    successMessage: string = "Run successfully!!",
+  actionFn: () => Promise<void> | Promise<any>,
+  successMessage: string = "Run successfully!!"
 ): Promise<ActionResponse> {
-    try {
-        await actionFn();
+  try {
+    await actionFn();
 
-        return {
-            success: true,
-            message: successMessage,
-        };
-    } catch (error: unknown) {
-        if (isRedirectError(error)) {
-            throw error;
-        }
-
-        console.error("Error during action execution:", error);
-
-        return {
-            success: false,
-            message: "An error has occurred during executing the action",
-        };
+    return {
+      success: true,
+      message: successMessage,
+    };
+  } catch (error: unknown) {
+    if (isRedirectError(error)) {
+      throw error;
     }
+
+    console.error("Error during action execution:", error);
+
+    return {
+      success: false,
+      message: "An error has occurred during executing the action",
+    };
+  }
 }

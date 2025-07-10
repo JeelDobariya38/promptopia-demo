@@ -1,4 +1,4 @@
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from "../generated/prisma";
 
 // Extend the global object to include a PrismaClient instance.
 // This is crucial for avoiding multiple PrismaClient instances in development
@@ -20,7 +20,7 @@ const prisma = globalForPrisma.prisma || new PrismaClient();
 // In development, store the PrismaClient instance on the global object
 // so it's reused across hot reloads. In production, a new instance is created
 // on each serverless function invocation, which is the desired behavior.
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
