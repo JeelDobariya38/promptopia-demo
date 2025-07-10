@@ -2,6 +2,9 @@
   "name": "promptopia-demo",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "npm run setup && next dev --turbopack",
     "build": "npm run setup && next build && node scripts/production-setup.js",
