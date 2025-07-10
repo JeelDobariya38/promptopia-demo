@@ -1,6 +1,6 @@
-import { getPost } from "@app/posts/postController";
+import { getPost } from "@/app/posts/postController";
 import { redirect } from "next/navigation";
-import PostCard from "@components/postcard";
+import PostCard from "@/components/postcard";
 
 export const metadata = {
   title: "Posts | Promptopia",

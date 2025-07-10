@@ -1,4 +1,4 @@
-import { deletePostForm } from "@app/posts/postController";
+import { deletePostForm } from "@/app/posts/postController";
 import Link from "next/link";
 import { SubmitButton } from "./submitbutton";
 

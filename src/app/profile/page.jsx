@@ -1,7 +1,7 @@
-import { getUserById } from "@app/auth/authController";
-import Feed from "@components/feed";
-import prisma from "@lib/prisma";
-import { getUserID } from "@lib/session";
+import { getUserById } from "@/app/auth/authController";
+import Feed from "@/components/feed";
+import prisma from "@/lib/prisma";
+import { getUserID } from "@/lib/session";
 import Image from "next/image";
 import Link from "next/link";
 

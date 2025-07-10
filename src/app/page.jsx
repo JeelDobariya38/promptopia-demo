@@ -1,5 +1,5 @@
-import Feed from "@components/feed";
-import NavigationBar from "@components/navigationbar";
+import Feed from "@/components/feed";
+import NavigationBar from "@/components/navigationbar";
 import { getPosts } from "./posts/postController";
 import Link from "next/link";
 

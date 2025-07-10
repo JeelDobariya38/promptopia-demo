@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PostCard from "@components/postcard";
+import PostCard from "@/components/postcard";
 
 export default function Feed({ posts, showfull, showdetails }) {
   if (posts.length === 0 && showdetails) {

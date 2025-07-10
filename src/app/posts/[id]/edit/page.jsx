@@ -1,6 +1,6 @@
-import { getPost, updatePostForm } from "@app/posts/postController";
-import { SubmitButton } from "@components/submitbutton";
-import { getUserID } from "@lib/session";
+import { getPost, updatePostForm } from "@/app/posts/postController";
+import { SubmitButton } from "@/components/submitbutton";
+import { getUserID } from "@/lib/session";
 import { redirect } from "next/navigation";
 
 export const metadata = {

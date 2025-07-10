@@ -1,4 +1,4 @@
-import { verifySession } from '@lib/session';
+import { verifySession } from '@/lib/session';
 import { NextResponse } from 'next/server';
 
 function logRequest(method, requestType, pathname, middlewareOutcome) {

@@ -1,4 +1,4 @@
-import { verifySession } from "@lib/session";
+import { verifySession } from "@/lib/session";
 import Link from "next/link";
 
 export default async function NavigationBar() {

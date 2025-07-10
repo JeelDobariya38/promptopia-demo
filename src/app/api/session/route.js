@@ -1,5 +1,5 @@
 // app/api/session/route.js
-import { verifySession } from "@lib/session";
+import { verifySession } from "@/lib/session";
 import { NextResponse } from "next/server";
 
 export async function GET() {
