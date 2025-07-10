@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <section className="text-center">
       <NavigationBar />
-      <Feed posts={posts} showdetails={false} />
+      <Feed posts={posts} />
       <Link
         href="/posts"
         prefetch={false}

@@ -1,9 +1,11 @@
 import { getUserById } from "@/app/auth/authController";
 import Feed from "@/components/feed";
-import prisma from "@/lib/prisma";
+import type { User } from "@/generated/prisma";
+import prisma, { type PostWithUser } from "@/lib/prisma";
 import { getUserID } from "@/lib/session";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Profile | Promptopia",
@@ -12,12 +14,19 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function Profile() {
-  let userId = await getUserID();
-  let user = await getUserById(userId);
+  let userId: string = await getUserID();
+  let user: User | null = await getUserById(userId);
 
-  let posts = await prisma.post.findMany({
+  if (!user) {
+    return redirect("/");
+  }
+
+  let posts: PostWithUser[] | null = await prisma.post.findMany({
     where: {
       userId,
+    },
+    include: {
+      author: true,
     },
   });
 

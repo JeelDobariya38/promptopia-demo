@@ -9,7 +9,11 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function EditPage({ params }) {
+export default async function EditPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   let post = await getPost(id);
 

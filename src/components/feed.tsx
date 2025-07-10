@@ -1,7 +1,16 @@
 import Link from "next/link";
 import PostCard from "@/components/postcard";
+import { PostWithUser } from "@/lib/prisma";
 
-export default function Feed({ posts, showfull, showdetails }) {
+export default function Feed({
+  posts,
+  showfull,
+  showdetails,
+}: {
+  posts: PostWithUser[];
+  showfull?: Boolean;
+  showdetails?: Boolean;
+}) {
   if (posts.length === 0 && showdetails) {
     return (
       <div className="my-4 flex justify-center gap-5">

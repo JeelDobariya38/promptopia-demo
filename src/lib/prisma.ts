@@ -1,4 +1,4 @@
-import { PrismaClient } from "../generated/prisma";
+import { Prisma, PrismaClient } from "../generated/prisma";
 
 // Extend the global object to include a PrismaClient instance.
 // This is crucial for avoiding multiple PrismaClient instances in development
@@ -25,3 +25,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 export default prisma;
+
+export type PostWithUser = Prisma.PostGetPayload<{
+  include: { author: true };
+}>;

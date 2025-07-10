@@ -1,8 +1,8 @@
-import { verifySession } from "@/lib/session";
+import { verifySession, type VerifySessionResult } from "@/lib/session";
 import Link from "next/link";
 
 export default async function NavigationBar() {
-  let { isAuth } = await verifySession();
+  let { isAuth }: VerifySessionResult = await verifySession();
 
   return (
     <div className="w-full px-4 text-center mt-5">
