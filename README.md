@@ -3,6 +3,10 @@
 Welcome to **Promptopia** – your one-stop platform for discovering, creating, and sharing creative AI prompts!
 This is my **first full-stack project** built with **Next.js**, and it’s been an exciting learning journey. I hope it helps you, inspires you, or maybe even sparks your next big idea!
 
+> [!IMPORTANT]
+> It my university assignment project, so any contribution to the project won't be accepted utill june 2026,
+>
+> But feel free to fork the repository and modify its code.. and code is licence under [MIT](LICENSE)..
 ---
 
 ## ✨ Inspiration
