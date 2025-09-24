@@ -3,6 +3,10 @@
 Welcome to **Promptopia** – your one-stop platform for discovering, creating, and sharing creative AI prompts!
 This is my **first full-stack project** built with **Next.js**, and it’s been an exciting learning journey. I hope it helps you, inspires you, or maybe even sparks your next big idea!
 
+> [!IMPORTANT]
+> It my university assignment project, so any contribution to the project won't be accepted utill june 2026,
+>
+> But feel free to fork the repository and modify its code.. and code is licence under [MIT](LICENSE)..
 ---
 
 ## ✨ Inspiration
@@ -154,9 +158,7 @@ openssl rand -base64 32
 Replace `YOUR_GENERATED_SECRET` with the actual secret you just generated:
 
 ```bash
-docker run -p 8080:3000 \
-  -e SESSION_SECRET="YOUR_GENERATED_SECRET" \
-  promptopia-demo-sqlite:latest
+docker run -d -p 8080:3000 -e SESSION_SECRET="YOUR_GENERATED_SECRET" promptopia-demo-sqlite:latest
 ```
 
 Visit your app at: [http://localhost:8080](http://localhost:8080)
