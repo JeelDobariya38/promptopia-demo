@@ -154,9 +154,7 @@ openssl rand -base64 32
 Replace `YOUR_GENERATED_SECRET` with the actual secret you just generated:
 
 ```bash
-docker run -p 8080:3000 \
-  -e SESSION_SECRET="YOUR_GENERATED_SECRET" \
-  promptopia-demo-sqlite:latest
+docker run -d -p 8080:3000 -e SESSION_SECRET="YOUR_GENERATED_SECRET" promptopia-demo-sqlite:latest
 ```
 
 Visit your app at: [http://localhost:8080](http://localhost:8080)
