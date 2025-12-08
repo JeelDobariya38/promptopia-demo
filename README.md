@@ -7,6 +7,7 @@ This is my **first full-stack project** built with **Next.js**, and it’s been 
 > It my university assignment project, so any contribution to the project won't be accepted utill june 2026,
 >
 > But feel free to fork the repository and modify its code.. and code is licence under [MIT](LICENSE)..
+
 ---
 
 ## ✨ Inspiration
@@ -51,47 +52,76 @@ Promptopia is packed with modern features for managing and sharing prompts:
 
 Before starting, configure your environment with a `.env` file. Here's a template:
 
-```env
-# --- SESSION CONFIG ---
-SESSION_SECRET="your_secret" # Use a strong, random string in production
+````bash
+# ---------------- SESSION ----------------
+# # Generate the `SESSION_SECRET` use this command.
+# # ```
+# # openssl rand -base64 32
+# # ```
+SESSION_SECRET="your_secret"
 
-# --- DATABASE CONFIG ---
-DATABASE_TYPE="sqlite" # or "mongodb"
 
-# SQLite (for local development)
+# ---------------- DATABASE ----------------
+# # Sqlite Config
+DATABASE_TYPE="sqlite"
 DATABASE_URL_SQLITE="file:./promptopia.db"
 
-# MongoDB (for cloud setup)
+# # MongoDB Config
+# DATABASE_TYPE="mongodb"
 # DATABASE_URL_MONGODB="mongodb+srv://<username>:<password>@<host>/promptopia"
 
-# --- OPTIONAL LOGGING ---
-LOGGING="verbose" # Set to "verbose" for detailed logs, or comment out
-```
+
+# ---------------- OPTIONAL ----------------
+# # Comment it, if you don't want logging...
+LOGGING="verbose"
+
+````
 
 ---
 
-## 🛠 Local Development Setup
+## 🛠 Local Development Setup (Windows)
 
 Follow these steps to get Promptopia running locally:
 
-### 1. Clone the Repository
+### 1. Setup Nodejs
 
 ```bash
-git clone
+Nodejs:  v24.11.1
+Npm: v11.5.2
+```
+
+[Install Nodejs](https://nodejs.org/dist/v24.11.1/node-v24.11.1-x64.msi)
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/JeelDobariya38/promptopia-demo.git
 cd promptopia-demo
 ```
 
-### 2. Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Set Environment Variables
+### 4. Set Environment Variables
 
 Create a `.env` file and copy the contents from `.env.example`. Update values as needed.
 
-### 4. Run the Development Server
+```bash
+cp ".env.example" ".env"
+```
+
+### 4.1 Optional
+
+Run this command & copy the secret generated, and the paste it into .env file (`SESSION_SECRET`)
+
+```bash
+openssl rand -base64 32
+```
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
@@ -106,6 +136,8 @@ This will also automatically set up the database for you.
 ## 📦 Production Build (Local)
 
 To simulate a production environment locally:
+
+Assumes that you have setup project already... like .env file and all stuff above....
 
 ### 1. Build the Project
 
@@ -135,7 +167,7 @@ Docker support is available for quick development and testing with SQLite.
 ### 1. Clone the Repository
 
 ```bash
-git clone
+git clone https://github.com/JeelDobariya38/promptopia-demo.git
 cd promptopia-demo
 ```
 
